@@ -1,0 +1,4 @@
+name: BetaSystem-Spigot-Recode
+version: '${project.version}'
+main: org.l1ulee.betasystemspigotrecode.BetaSystem_Spigot_Recode
+prefix: §6BetaSystem§r
