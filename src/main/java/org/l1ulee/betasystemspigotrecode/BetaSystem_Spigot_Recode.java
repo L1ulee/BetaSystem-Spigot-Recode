@@ -83,6 +83,7 @@ public class BetaSystem_Spigot_Recode extends JavaPlugin {
 
             mysql.options().copyDefaults(true);
             mysql.addDefault("HOST", "localhost");
+            mysql.addDefault("PORT", "3306");
             mysql.addDefault("DATABASE", "BetaSystem");
             mysql.addDefault("USER", "root");
             mysql.addDefault("PASSWORD", "yourpassword");
@@ -126,7 +127,7 @@ public class BetaSystem_Spigot_Recode extends JavaPlugin {
         MySQLConnect.DATABASE = mysqlcfg.getString("DATABASE");
         MySQLConnect.USER = mysqlcfg.getString("USER");
         MySQLConnect.PASSWORD = mysqlcfg.getString("PASSWORD");
-        mysql = new MySQLConnect(MySQLConnect.HOST, MySQLConnect.DATABASE, MySQLConnect.USER, MySQLConnect.PASSWORD);
+        mysql = new MySQLConnect(MySQLConnect.HOST, MySQLConnect.PORT ,MySQLConnect.DATABASE, MySQLConnect.USER, MySQLConnect.PASSWORD);
         mysql.update("CREATE TABLE IF NOT EXISTS beta(\n  BETAKEY varchar(255) UNIQUE,\n  UUID varchar(255),\n  CREATOR varchar(255),\n  DATE varchar(255)\n);\n");
         File config = new File(this.getDataFolder().getPath(), "config.yml");
         YamlConfiguration configcfg = YamlConfiguration.loadConfiguration(config);

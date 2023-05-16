@@ -14,18 +14,21 @@ import java.sql.Statement;
 import org.bukkit.Bukkit;
 public class MySQLConnect {
     public static String HOST;
+    public static Integer PORT;
     public static String DATABASE;
     public static String USER;
     public static String PASSWORD;
     private Connection con;
 
-    public MySQLConnect(String host, String database, String user, String password) {
+    public MySQLConnect(String host, Integer port, String database, String user, String password) {
         HOST = host;
+        PORT = port;
         DATABASE = database;
         USER = user;
         PASSWORD = password;
         this.connect();
     }
+    /*测试用*/
 //    public void Target(){
 //        HOST = "43.248.186.42";
 //        DATABASE = "minecraft_beta";
@@ -34,7 +37,7 @@ public class MySQLConnect {
 //    }
     public void connect() {
         try {
-            this.con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":3306/" + DATABASE + "?autoReconnect=true", USER, PASSWORD);
+            this.con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?autoReconnect=true", USER, PASSWORD);
             Bukkit.getConsoleSender().sendMessage(BetaSystem_Spigot_Recode.Prefix + "§aThe connection with the MySQL database was successfully");
         } catch (SQLException var2) {
             Bukkit.getConsoleSender().sendMessage(BetaSystem_Spigot_Recode.Prefix + "§cThe connection with the MySQL database failed: §4" + var2.getMessage());
